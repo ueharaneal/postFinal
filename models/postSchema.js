@@ -10,8 +10,5 @@ const postSchema = new mongoose.Schema({
     adminCode: {type:String}
 })
 
-const Post =  mongoose.model('Post', postSchema);
+module.exports = mongoose.model('Post', postSchema);
 
-
-
-module.exports = postSchema;

@@ -38,6 +38,5 @@ function initializeScript(postNumber) {
   createPost(postID, volCodeArray, durCodeArray, adminCode);
 }
 
-initializeScript("1");
 
 module.exports = initializeScript;

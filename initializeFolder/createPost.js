@@ -1,21 +1,18 @@
-require('dotenv').config();
 
-const mongoose = require('mongoose');
 const Post = require('../models/postSchema.js');
 
-// Connect to MongoDB
-const uri = process.env.MONGODB_URI;
-console.log("MongoDB URI:", uri);
-
-mongoose.connect(uri).then(() => {
-    console.log("Connected to MongoDB");
-}).catch(err => {
-    console.error("MongoDB connection error:", err);
-});
-
-// Create and save a new post
+// Create and save a new post this is called by initialize script
 async function createPost(postID, volCodeArray, durCodeArray, adminCode) {
-    try {
+
+  try{
+    //we need to check to see if the existing post already exist in the db
+    const existingPost = await Post.findOne({postId : postID});
+    if(existingPost){
+      console.log(`Post with PostID:${postID} already exist, please initiate with a different post number`)
+      return;
+    }
+
+    
         const newPost = new Post({
             postId: postID,
             volCodeArray: volCodeArray,
@@ -25,13 +22,12 @@ async function createPost(postID, volCodeArray, durCodeArray, adminCode) {
             adminCode: adminCode,
         });
 
-        await newPost.save();
-        console.log("Post saved successfully");
-    } catch (error) {
+      await newPost.save();
+      console.log("Post saved successfully");
+  } catch (error) {
         console.error("Error saving the post:", error);
-    } finally {
-        mongoose.connection.close();
     }
 }
+// we are  now saving this post inside of the app.js file now 
 
 module.exports = createPost;
