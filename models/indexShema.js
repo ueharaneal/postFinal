@@ -1,20 +1,18 @@
 const mongoose = require('mongoose');
 
+const indexSchema = mongoose.model({
 
-const postSchema = new mongoose.Schema({
-    postId: {type: String},
-    volCodeArray: [[{type: Number}]],
+    ///FIGURE OUT HOW TO CREATE A RELATION WITH THE POST SCHEMA 
+    postId: {type:String},
     volCodeIndexZero: {type: Number},
     volCodeIndexOne: {type: Number},
     volCodeIndexTwo: {type: Number},
     volCodeIndexThree: {type: Number},
-    durCodeArray:[[{type: Number}]],
     durCodeIndexZero: {type: Number},
     durCodeIndexOne: {type: Number},
     durCodeIndexTwo: {type: Number},
     durCodeIndexThree: {type: Number},
-    adminCode: {type:String}
 })
 
-module.exports = mongoose.model('Post', postSchema);
 
+module.exports  = mongoose.model('index',indexSchema);

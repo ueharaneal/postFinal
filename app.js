@@ -3,7 +3,7 @@ const connectDB = require('./db');
 const initializeScript = require('./initializeFolder/initializeScript')
 connectDB();
 
-initializeScript(1);
+initializeScript(2);
 
 
 

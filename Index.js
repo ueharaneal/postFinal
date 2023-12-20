@@ -1,5 +1,6 @@
-import initializeScript from "./initializeFolder/initializeScript.js";
-import { createPost } from "./initializeFolder/createPost.js";
+
+const initializeScript = require('./initializeFolder/initializeScript.js');
+const createPost = require("./initializeFolder/createPost.js")
 
 // Function to update the PID object
 function updatePID(PID) {

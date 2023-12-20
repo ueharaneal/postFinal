@@ -16,9 +16,15 @@ async function createPost(postID, volCodeArray, durCodeArray, adminCode) {
         const newPost = new Post({
             postId: postID,
             volCodeArray: volCodeArray,
-            volCodeIndex: 0,
+            volCodeIndexZero: 0,
+            volCodeIndexOne: 0,
+            volCodeIndexTwo: 0,
+            volCodeIndexThree: 0,
             durCodeArray: durCodeArray,
-            durCodeIndex: 0,
+            durCodeIndexZero: 0,
+            durCodeIndexOne: 0,
+            durCodeIndexTwo: 0,
+            durCodeIndexThree: 0,
             adminCode: adminCode,
         });
 

@@ -25,7 +25,7 @@ function convertToArrayOfNumbers(input) {
     throw new TypeError('Input must be a string or an array');
   }
 }
-
+// main function
 function initializeScript(postNumber) {
   const postID = PIDGenerator(postNumber);
   const volCode = PID2VolCodes(postID);
