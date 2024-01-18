@@ -6,6 +6,7 @@
     "body-parser": "^1.20.2",
     "concurrently": "^8.2.2",
     "dotenv": "^16.3.1",
+    "express": "^4.18.2",
     "js-sha256": "^0.10.1",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.2.0",
@@ -17,7 +18,9 @@
   "main": "practice.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon"
+    "server": "nodemon server/server.js",
+    "start-frontend": "cd frontend && npm start",
+    "dev": "concurrently \"npm run server\" \"npm run start-frontend\""
   },
   "author": "",
   "license": "ISC",
