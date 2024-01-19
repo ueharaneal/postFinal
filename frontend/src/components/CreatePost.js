@@ -46,9 +46,10 @@ function CreatePost() {
 					onBlur={formik.handleBlur}
 					value={formik.values.email}
 				></input>
-				{formik.touched && formik.errors.email ? (
+				{formik.touched.email && formik.errors.email ? (
 					<div>{formik.errors.email}</div>
 				) : null}
+
 				<label htmlFor='username'>Username: </label>
 				<input
 					name='userName'
@@ -58,7 +59,7 @@ function CreatePost() {
 					onBlur={formik.handleBlur}
 					value={formik.values.userName}
 				></input>
-				{formik.touched && formik.errors.userName ? (
+				{formik.touched.userName && formik.errors.userName ? (
 					<span>{formik.errors.userName}</span>
 				) : null}
 
@@ -71,6 +72,9 @@ function CreatePost() {
 					onBlur={formik.handleBlur}
 					value={formik.values.postLocation}
 				></input>
+				{formik.touched.postLocation && formik.errors.postLocation ? (
+					<span>{formik.errors.postLocation}</span>
+				) : null}
 
 				<label htmlFor='postId'>Post ID</label>
 				<input
@@ -81,6 +85,9 @@ function CreatePost() {
 					onBlur={formik.onBlur}
 					value={formik.values.postId}
 				></input>
+				{formik.touched.postId && formik.errors.postId ? (
+					<span>{formik.errors.postId}</span>
+				) : null}
 				<button type='submit'>Submit</button>
 			</form>
 		</div>
