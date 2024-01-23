@@ -2,7 +2,7 @@
 const Post = require('../models/postSchema.js');
 
 // Create and save a new post this is called by initialize script
-async function createPost(postID, volCodeArray, durCodeArray, adminCode) {
+async function createPost(postID, postName, volCodeArray, durCodeArray, adminCode) {
 
   try{
     //we need to check to see if the existing post already exist in the db
@@ -15,6 +15,7 @@ async function createPost(postID, volCodeArray, durCodeArray, adminCode) {
     
         const newPost = new Post({
             postId: postID,
+            postName: postName,
             volCodeArray: volCodeArray,
             volCodeIndexZero: 0,
             volCodeIndexOne: 0,

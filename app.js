@@ -1,9 +1,9 @@
 require("dotenv").config()
-const connectDB = require("../models/db")
-const initializeScript = require("../initializeFolder/initializeScript")
+const connectDB = require("./models/db.js")
+const initializeScript = require("./initializeFolder/initializeScript.js")
 connectDB()
 
-initializeScript(3)
+initializeScript(5, "laguna beach")
 
 //calling each indivual element
 

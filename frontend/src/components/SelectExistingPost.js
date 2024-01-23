@@ -7,7 +7,7 @@ function SelectExistingPost() {
 	const formik = useFormik({
 		initialValues: {
 			postLocation: "",
-			postId: 0,
+			postDuration: "",
 		},
 		onSubmit: values => {
 			alert(JSON.stringify(values, null, 3))
@@ -17,8 +17,8 @@ function SelectExistingPost() {
 			if (!values.postLocation) {
 				errors.postLocation = "Post Location is required"
 			}
-			if (!values.postId) {
-				errors.postId = "Post id is required"
+			if (!values.postDuration) {
+				errors.postDuration = "Post duration is required"
 			}
 			return errors
 		},
@@ -31,32 +31,44 @@ function SelectExistingPost() {
 				onSubmit={formik.handleSubmit}
 				className='flex flex-col items-center justify-center gap-y-1 text-left w-3/6'
 			>
-				<label htmlFor='postLocation'>Post Location</label>
-				<input
+				<label htmlFor='postLocation' className='font-medium text-lg'>
+					Post Location
+				</label>
+				<select
 					name='postLocation'
 					id='postLocation'
 					type='text'
 					onChange={formik.handleChange}
 					onBlur={formik.handleBlur}
 					value={formik.values.postLocation}
-				></input>
+				>
+					<option value='' label='Select a Post Location' />
+					<option value='newport beach' label='Newport Beach' />
+				</select>
 				{formik.touched.postLocation && formik.errors.postLocation ? (
 					<span className='text-red-600'>
 						{formik.errors.postLocation}
 					</span>
 				) : null}
 
-				<label htmlFor='postId'>Post ID</label>
-				<input
-					name='postId'
-					id='postId'
+				<label htmlFor='postDuration' className='font-medium text-lg'>
+					Duration
+				</label>
+				<select
+					name='postDuration'
+					id='postDuration'
 					type='text'
 					onChange={formik.handleChange}
-					onBlur={formik.onBlur}
-					value={formik.values.postId}
-				></input>
-				{formik.touched.postId && formik.errors.postId ? (
-					<span className='text-red-600'>{formik.errors.postId}</span>
+					onBlur={formik.handleBlur}
+					value={formik.values.postDuration}
+				>
+					<option value='' label='Choose a Duration'></option>
+					<option value='10' label='10 minutes'></option>
+				</select>
+				{formik.touched.postDuration && formik.errors.postDuration ? (
+					<span className='text-red-600'>
+						{formik.errors.postDuration}
+					</span>
 				) : null}
 				<button
 					type='submit'

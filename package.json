@@ -6,7 +6,7 @@
     "body-parser": "^1.20.2",
     "concurrently": "^8.2.2",
     "cors": "^2.8.5",
-    "dotenv": "^16.3.1",
+    "dotenv": "^16.3.2",
     "express": "^4.18.2",
     "flowbite-react": "^0.7.2",
     "js-sha256": "^0.10.1",
