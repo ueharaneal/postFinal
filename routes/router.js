@@ -5,7 +5,9 @@ router.get("/", (req, res) => {
 	res.send("this app is working")
 })
 
-router.get("/register", (req, res) => {})
+router.get("/register", (req, res) => {
+	res.send("hellow")
+})
 
 router.get("postdata", (res, req) => {
 	postData = [

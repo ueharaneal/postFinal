@@ -58,7 +58,10 @@ function SelectExistingPost() {
 				{formik.touched.postId && formik.errors.postId ? (
 					<span className='text-red-600'>{formik.errors.postId}</span>
 				) : null}
-				<button type='submit' className='bg-gray-400 rounded-full p-3'>
+				<button
+					type='submit'
+					className='bg-[#27374D] text-[#DDE6ED] rounded-full p-4 m-2'
+				>
 					Submit
 				</button>
 			</form>
