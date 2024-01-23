@@ -1,5 +1,5 @@
 require("dotenv").config()
-const connectDB = require("../db")
+const connectDB = require("../models/db")
 const initializeScript = require("../initializeFolder/initializeScript")
 connectDB()
 
