@@ -7,3 +7,5 @@ input[text="password"],
 input[type="email"] {
 	@apply w-full border my-2 py-2 px-3 rounded-2xl;
 }
+
+background-color: #DDE6ED;

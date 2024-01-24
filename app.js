@@ -3,7 +3,7 @@ const connectDB = require("./models/db.js")
 const initializeScript = require("./initializeFolder/initializeScript.js")
 connectDB()
 
-initializeScript(5, "laguna beach")
+initializeScript(3, "Venice Beach")
 
 //calling each indivual element
 

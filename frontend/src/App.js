@@ -8,7 +8,7 @@ import SelectPost from "./pages/SelectPost"
 import Register from "./pages/Register"
 function App() {
 	return (
-		<div>
+		<div className="">
 			<BrowserRouter>
 				<NavBar />
 				<Routes>

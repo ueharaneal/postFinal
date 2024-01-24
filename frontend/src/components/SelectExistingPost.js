@@ -1,9 +1,32 @@
+import {useEffect, useState} from 'react'
 import { useFormik } from "formik"
 import Yup from "yup"
 
+
 //we need to fetch the post location from the server
 
+
 function SelectExistingPost() {
+	//set useState 
+	const[selectedPost, setSelectedPost] = useState([])
+	const[post, setPost] = useState(["Newport Beach"])
+
+
+	///call postLocation api and Duration times. 
+	
+	useEffect(()=>{
+		axios.get("api/postData")
+		.then((response)=>{
+			setPost(response)
+		})
+		.catch((error)=>{
+			console.error("error fetching data", error)
+		})
+	})
+	//duration time later 
+	const postLocationContent = post.map(location =>{
+		return <option key={post.id} value={post.name} label={post.name} />
+	})
 	const formik = useFormik({
 		initialValues: {
 			postLocation: "",
@@ -43,7 +66,7 @@ function SelectExistingPost() {
 					value={formik.values.postLocation}
 				>
 					<option value='' label='Select a Post Location' />
-					<option value='newport beach' label='Newport Beach' />
+					{postLocationContent}
 				</select>
 				{formik.touched.postLocation && formik.errors.postLocation ? (
 					<span className='text-red-600'>
