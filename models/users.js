@@ -46,4 +46,8 @@ const userSchema = new Schema({
 
 const User = mongoose.model('User',userSchema);
 
+//we will create the pre for hashing 
+
+//models to compare candidatePassword and user.password
+
 module.exports = { User }

@@ -29,3 +29,4 @@ module.exports = {
 	hashPasswords,
 	comparePasswords,
 }
+//sending this to user.js (userSchema file)
