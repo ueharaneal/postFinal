@@ -12,7 +12,7 @@ router.get("/register", (req, res) => {
 })
 
 //to get all post data
-router.get("/postdata", async(req, res) => {
+router.get("/api/postdata", async(req, res) => {
 	try {
 		const allPosts = await posts.find(); // Use Mongoose to find all posts in the database
 		res.json(allPosts); // Send the retrieved data as JSON response

@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react'
 import { useFormik } from "formik"
 import Yup from "yup"
+import axios from 'axios'
 
 
 //we need to fetch the post location from the server
@@ -9,7 +10,7 @@ import Yup from "yup"
 function SelectExistingPost() {
 	//set useState 
 	const[selectedPost, setSelectedPost] = useState([])
-	const[post, setPost] = useState(["Newport Beach"])
+	const[posts, setPosts] = useState(["Newport Beach"])
 
 
 	///call postLocation api and Duration times. 
@@ -17,15 +18,15 @@ function SelectExistingPost() {
 	useEffect(()=>{
 		axios.get("api/postData")
 		.then((response)=>{
-			setPost(response)
+			setPosts(response.data)
 		})
 		.catch((error)=>{
 			console.error("error fetching data", error)
 		})
 	})
 	//duration time later 
-	const postLocationContent = post.map(location =>{
-		return <option key={post.id} value={post.name} label={post.name} />
+	const postLocationContent = posts.map((post) =>{
+		return <option key={post._id} value={post.postName} label={post.postName} />
 	})
 	const formik = useFormik({
 		initialValues: {
@@ -85,8 +86,8 @@ function SelectExistingPost() {
 					onBlur={formik.handleBlur}
 					value={formik.values.postDuration}
 				>
-					<option value='' label='Choose a Duration'></option>
-					<option value='10' label='10 minutes'></option>
+					<option key="" value='' label='Choose a Duration'></option>
+					<option  key="2" value='10' label='10 minutes'></option>
 				</select>
 				{formik.touched.postDuration && formik.errors.postDuration ? (
 					<span className='text-red-600'>
