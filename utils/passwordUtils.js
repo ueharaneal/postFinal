@@ -1,10 +1,11 @@
 //this function will hash the user's password
 
 const bcrypt = require("bcrypt")
-const saltRounds = 10
+
 
 //hashPasswords will be used when a user creates an account
 const hashPasswords = async password => {
+	const saltRounds = 10
 	try {
 		const salt = await bcrypt.genSalt(saltRounds)
 		const hash = await bcrypt.hash(password, salt)
@@ -15,18 +16,11 @@ const hashPasswords = async password => {
 	}
 }
 
-//comparePasswords will be used when a user
-const comparePasswords = async (password, hash) => {
-	try {
-		return await bcrypt.compare(password, hash)
-	} catch (error) {
-		console.error("There was an error compare passwords", error)
-		throw error
-	}
-}
+
+
 
 module.exports = {
 	hashPasswords,
-	comparePasswords,
+
 }
 //sending this to user.js (userSchema file)
