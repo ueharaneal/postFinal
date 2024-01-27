@@ -1,6 +1,5 @@
 import {useEffect, useState} from 'react'
 import { useFormik } from "formik"
-import Yup from "yup"
 import axios from 'axios'
 
 
@@ -49,11 +48,11 @@ function SelectExistingPost() {
 	})
 	return (
 		//containter div that will also contain the for
-		<div className='flex flex-col justify-center items-center w-5/6 '>
+		<div className='flex flex-col justify-center items-center w-5/6 gap-y-7'>
 			<h1 className='font-bold text-3xl'>Select a Post</h1>
 			<form
 				onSubmit={formik.handleSubmit}
-				className='flex flex-col items-center justify-center gap-y-1 text-left w-3/6'
+				className='flex flex-col items-center justify-center gap-y-4 text-left w-3/6'
 			>
 				<label htmlFor='postLocation' className='font-medium text-lg'>
 					Post Location
@@ -65,8 +64,9 @@ function SelectExistingPost() {
 					onChange={formik.handleChange}
 					onBlur={formik.handleBlur}
 					value={formik.values.postLocation}
+					className='select select-primary w-full max-w-xs'
 				>
-					<option value='' label='Select a Post Location' />
+					<option disabled selected value='' label='Select a Post Location' />
 					{postLocationContent}
 				</select>
 				{formik.touched.postLocation && formik.errors.postLocation ? (
@@ -85,8 +85,9 @@ function SelectExistingPost() {
 					onChange={formik.handleChange}
 					onBlur={formik.handleBlur}
 					value={formik.values.postDuration}
+					className='select select-primary w-full max-w-xs'
 				>
-					<option key="" value='' label='Choose a Duration'></option>
+					<option disabled selected key="" value='' label='Choose a Duration'></option>
 					<option  key="2" value='10' label='10 minutes'></option>
 				</select>
 				{formik.touched.postDuration && formik.errors.postDuration ? (
