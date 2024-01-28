@@ -3,8 +3,11 @@ import MobileNavBar from "./components/MobileNavBar";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
-import SelectPost from "./pages/SelectPost";
+
 import Register from "./pages/Register";
+import ProfilePage from './pages/ProfilePage'
+import SelectPostPage from "./pages/SelectPostPage";
+import AppointmentPage from "./pages/AppointmentPage";
 
 function App() {
   return (
@@ -24,7 +27,9 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/selectpost" element={<SelectPost />}></Route>
+            <Route path='/profile' element={<ProfilePage/>} />
+            <Route path='/appointments' element={<AppointmentPage/>}/>
+            <Route path="/selectpost" element={<SelectPostPage />}></Route>
           </Routes>
         </div>
         <Footer />

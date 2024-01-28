@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom'
+
 function Home() {
   return (
     <div className="hero min-h-screen bg-base-200">
@@ -15,7 +17,7 @@ function Home() {
             excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
             a id nisi.
           </p>
-          <button className="btn btn-primary">Find a Smart Speaker</button>
+          <Link to='/selectpost' className="btn btn-primary">Find a Smart Speaker</Link>
         </div>
       </div>
     </div>

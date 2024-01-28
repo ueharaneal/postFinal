@@ -2,9 +2,11 @@ import { Link } from "react-router-dom";
 
 function NavBar() {
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 py-5">
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl">Street Sound Society</a>
+        <Link to="/" className="btn btn-ghost text-2xl">
+          Street Sound Society
+        </Link>
       </div>
       <div className="flex-none gap-2">
         {/* <div className="form-control">
@@ -14,7 +16,9 @@ function NavBar() {
             className="input input-bordered w-24 md:w-auto"
           />
         </div> */}
-        <button className="btn btn-primary">Book an appointment</button>
+        <Link to="/selectpost">
+          <button className="btn btn-primary mx-5">Book an appointment</button>
+        </Link>
         <div className="dropdown dropdown-end">
           <div
             tabIndex={0}
@@ -30,16 +34,19 @@ function NavBar() {
           </div>
           <ul
             tabIndex={0}
-            className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+            className="mt-3 z-[1] gap-y-4 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
           >
             <li>
-              <a className="justify-between">
-                Profile
-                <span className="badge">New</span>
-              </a>
+              <Link to="/appointments" className="justify-between text-base">
+                Appointments
+                <span className="badge text-sm">New</span>
+              </Link>
             </li>
             <li>
-              <a>Settings</a>
+              <Link to="/profile" className="justify-between text-base ">
+                Profile
+                <span className="badge"></span>
+              </Link>
             </li>
             <li>
               <a>Logout</a>
