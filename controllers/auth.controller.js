@@ -4,11 +4,14 @@ const { User } = require("../models/users")
 
 const authController = {
 	async register(req, res, next) {
+		console.log("got the request ")
 		try {
 			const { email, password } = req.body
+			console.log("got the req body ")
 			const user = await authService.createUser(email, password)
+			console.log(user)
 			//creating a token
-			const token = await genAuthToken(user)
+			const token = await authService.genAuthToken(user)
 			res.cookie("x-access-token", token).status(httpStatus.CREATED).send({
 				user,
 				token,

@@ -11,7 +11,7 @@ const port = process.env.PORT || 3001
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-const routes = require("./routes/index")
+const routes = require("./routes/index.js")
 const connectDb = require("./models/db.js")
 
 const corsOptions = {
