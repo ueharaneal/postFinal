@@ -15,7 +15,7 @@ function SelectExistingPost() {
 	///call postLocation api and Duration times. 
 	
 	useEffect(()=>{
-		axios.get("api/postData")
+		axios.get("/postData")
 		.then((response)=>{
 			setPosts(response.data)
 		})
