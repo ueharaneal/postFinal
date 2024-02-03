@@ -11,7 +11,7 @@ const routesIndex = [
 		route: authRoute,
 	},
 	{
-		path: "/user",
+		path: "/users",
 		route: userRoute,
 	},
 	{

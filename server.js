@@ -11,8 +11,9 @@ const port = process.env.PORT || 3001
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-const routes = require("./routes/index.js")
+const routes = require("./routes")
 const connectDb = require("./models/db.js")
+
 
 const corsOptions = {
 	origin: "*",
@@ -25,10 +26,11 @@ connectDb()
 app.use(cors(corsOptions))
 
 //Sanitize
-app.use(mongoSanitize)
+app.use(mongoSanitize())
 app.use(xss())
 
 //open database connection when application starts
+
 
 app.use("/api", routes)
 

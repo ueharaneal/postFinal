@@ -74,22 +74,11 @@ userSchema.pre("save", async function (next) {
 	}
 })
 //models to compare candidatePassword and user.password
-userSchema.methods.comparePasswords = function (candidatePassword, callback) {
-	//candidate password = req.body.password
-	var user = this
-	bcrypt.compare(
-		candidatePassword,
-		user.password,
-		function (error, isMatched) {
-			//the callback will allow us to exit out of the function
-			if (error) {
-				return callback(error)
-			}
-			callback(null, isMatched)
-		}
-	)
+userSchema.methods.comparePasswords = async function(candidatePassword){
+	const user = this
+	const match = await bcrypt.compare(candidatePassword, user.password)
+	return match
 }
-
 const User = mongoose.model("User", userSchema)
 
 module.exports = { User }
