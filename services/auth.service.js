@@ -1,14 +1,17 @@
 const httpStatus = require("http-status");
-
 const { User } = require("../models/users");
 const userService = require("./user.service");
 
 const createUser = async (email, password) => {
   try {
-    if (await User.isEmailTaken(email)) {
-      throw new Error("sorry email is taken");
+    if (await User.emailTaken(email)) {
+      throw new Error("Sorry email taken");
     }
-    const user = new User({ email: email, password: password });
+
+    const user = new User({
+      email,
+      password,
+    });
     await user.save();
     return user;
   } catch (error) {
@@ -16,22 +19,20 @@ const createUser = async (email, password) => {
   }
 };
 
-const genAuthToken = async (user) => {
+const genAuthToken = (user) => {
   const token = user.generateAuthToken();
   return token;
 };
 
 const signInWithEmailAndPassword = async (email, password) => {
   try {
-    //check if email exist
     const user = await userService.findUserByEmail(email);
     if (!user) {
-      throw new Error("User by email does not exist");
+      throw new Error("Sorry BAD email");
     }
-    //validate password
-    const isMatch = await user.comparePasswords(password);
-    if (!isMatch) {
-      throw new Error("Passwords do not match");
+    /// validate password
+    if (!(await user.comparePasswords(password))) {
+      throw new Error("Sorry BAD password");
     }
     return user;
   } catch (error) {
