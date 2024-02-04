@@ -1,5 +1,5 @@
 import React from 'react'
-import RegisterForm from './ui/RegisterForm.jsx'
+import RegisterForm from './customUi/RegisterForm.jsx'
 
 function Register() {
   return (

@@ -17,11 +17,14 @@ module.exports = {
       },
     },
     extend: {
+      height: {
+        'screen-90': '90vh', // 75% of the viewport height
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
+        background: "hsl(345°,5%,15%)",
         foreground: "hsl(var(--foreground))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
