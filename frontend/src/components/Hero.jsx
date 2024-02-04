@@ -1,9 +1,9 @@
 import React from 'react'
-
+import { GridHoverHero } from './ui/GridCoverHero'
 function Hero() {
   return (
     <div>
-      Hero
+      <GridHoverHero/>
     </div>
   )
 }

@@ -1,11 +1,11 @@
-import React from 'react'
-
+import React from "react";
+import Register from "../components/Register";
 function SignInPage() {
   return (
     <div>
-      SignInPage
+      <Register />
     </div>
-  )
+  );
 }
 
-export default SignInPage
+export default SignInPage;
