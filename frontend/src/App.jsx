@@ -1,9 +1,21 @@
 import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import SignInPage from "./pages/SignInPage";
+
+import NavBar from "./components/NavBar";
 
 function App() {
   return (
     <>
-      <div className="text-green-400">Please Work</div>
+      <BrowserRouter>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/signin" element={<SignInPage />}></Route>
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
