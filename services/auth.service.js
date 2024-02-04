@@ -4,7 +4,7 @@ const userService = require("./user.service");
 
 const createUser = async (email, password) => {
   try {
-    if (await User.emailTaken(email)) {
+    if (await User.isEmailTaken(email)) {
       throw new Error("Sorry email taken");
     }
 
