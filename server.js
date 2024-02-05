@@ -14,6 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 const routes = require("./routes")
 const connectDb = require("./models/db.js")
 
+const { handleError, convertToApiError } = require("./middlewares/apiError.js")
 
 const corsOptions = {
 	origin: "*",
@@ -31,9 +32,13 @@ app.use(xss())
 
 //open database connection when application starts
 
-
 app.use("/api", routes)
 
+//handleError middlewarew
+app.use(convertToApiError)
+app.use((err, req, res, next) => {
+	handleError(err, res)
+})
 app.listen(port, () => {
 	console.log(`App is listening on port ${port}`)
 })
