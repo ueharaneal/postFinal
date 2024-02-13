@@ -7,7 +7,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-//Create a container that pullsup post data
 
 
 function SelectPostSelection() {
