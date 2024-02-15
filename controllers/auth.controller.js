@@ -32,6 +32,13 @@ const authController = {
 			next(error)
 		}
 	},
+	async isauth(req, res, next) {
+		try {
+			res.send("ok")
+		} catch (error) {
+			res.error(error)
+		}
+	},
 }
 
 module.exports = authController
