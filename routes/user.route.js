@@ -1,8 +1,11 @@
-const express = require("express")
-const router = express.Router()
-
+const express = require("express");
+const router = express.Router();
+const userController = require('../controllers/user.controller.js')
 router.get("/", (req, res) => {
-	res.send("Hello from user route!")
-})
+  res.send("Hello from user route!");
+});
 
-module.exports = router
+//route to retrive all users first and last name
+router.get("/getusersnames", userController.getUsersNames);
+
+module.exports = router;

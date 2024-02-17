@@ -1,7 +1,7 @@
 const { Post } = require('../models/postSchema')
 
 
-const  retrievePostNames = async() =>{
+const retrievePostNames = async() =>{
     try{
         if (!Post) {
             console.error("Failed to import Post model");
