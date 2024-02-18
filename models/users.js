@@ -30,12 +30,12 @@ const userSchema = new Schema({
     enum: ["user", "admin"],
     default: "user",
   },
-  firstname: {
+  firstName: {
     type: String,
     trim: true,
     maxLength: 100,
   },
-  lastname: {
+  lastName: {
     type: String,
     trim: true,
     maxLength: 100,
@@ -44,6 +44,10 @@ const userSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  terms:{
+    type: Boolean,
+    required: [true, 'You must agree to the terms and conditions.']
+  }
 });
 
 //check to see if the email exist
