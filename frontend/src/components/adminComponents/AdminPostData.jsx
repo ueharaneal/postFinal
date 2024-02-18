@@ -20,8 +20,47 @@ function AdminPostData() {
 
   const handleSelectionChange = (event) => {
     const postObject = postData.find((post) => post._id === event.target.value);
-    setSelectedPost(postObject);
+    setSelectedPost(postObject || {});
   };
+
+  //CONTENT FOR VOL AND DUR CODES
+  const volCodeArrayContent =
+    selectedPost && selectedPost.volCodeArray
+      ? selectedPost.volCodeArray.map((codeArray, index) => {
+          return (
+            <div key={index}>
+              <h3>Array {index + 1}</h3>
+              <ul>
+                {codeArray.map((code, codeIndex) => {
+                  return <li key={codeIndex}>{code}</li>;
+                })}
+              </ul>
+            </div>
+          );
+        })
+      : null;
+
+  //content for the dur codes
+  const durCodeArrayContent =
+    selectedPost && selectedPost.durCodeArray
+      ? selectedPost.durCodeArray.map((codeArray, index) => {
+          return (
+            <div className="flex flex-col my-2">
+              <h3 className="font-bold">Array {index + 1}</h3>
+              <div className="flex flex-row">
+                {codeArray.map((code, index) => {
+                  return (
+                    <div className="my-2" key={code}>
+                      {code},
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })
+      : null;
+
   return (
     <div className="flex flex-col gap-y-3 p-4">
       <h1 className="font-bold mb-5">Post Data</h1>
@@ -43,11 +82,11 @@ function AdminPostData() {
             );
           })}
         </select>
-        {selectedPost._id && (
+        {selectedPost?._id && (
           <div className="flex flex-col gap-y-5">
             <div>
               <h2>Post ID</h2>
-              <div>{selectedPost._id} </div>
+              <div>{selectedPost.postId ? selectedPost.postId : null} </div>
             </div>
             <div>
               <h2>Location</h2>
@@ -55,11 +94,11 @@ function AdminPostData() {
             </div>
             <div>
               <h2>Volume Codes</h2>
-              <div></div>
+              {volCodeArrayContent}
             </div>
             <div>
               <h2>Duration Codes</h2>
-              <div></div>
+              {durCodeArrayContent}
             </div>
             <div>
               <h2>Admin Code</h2>
