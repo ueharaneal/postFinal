@@ -44,9 +44,10 @@ const RegisterFormik = () => {
       console.log(response);
       toast.success("Account Created!");
     } catch (error) {
+      console.log("there was an error from toaster")
       console.log(error.response?.data);
       if (error.response && error.response.data) {
-        const errorMessage = error.response?.data; // Assuming error message is in error.response.data.message
+        const errorMessage = error.response.data.message; // Assuming error message is in error.response.data.message
         toast.error(errorMessage);
       }
     } finally {

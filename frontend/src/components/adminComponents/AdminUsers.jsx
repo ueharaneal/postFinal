@@ -13,7 +13,6 @@ function AdminUsers() {
       .get("api/users/getusersnames")
       .then((response) => {
         setUserNames(response.data);
-        console.log(userNames);
       })
       .catch((error) => {
         console.error("there was an error", error);
@@ -22,12 +21,14 @@ function AdminUsers() {
 
   // make an api call when the selected user changes
   useEffect(() => {
-    const userResponse = axios
-      .post("/api/users/getuser", { id: selectedUser })
-      .then((userResponse) => setUserData(userResponse.data))
-      .catch((error) => {
-        console.error("Error fetching user", error);
-      });
+    if (selectedUser) {
+      const userResponse = axios
+        .post("/api/users/getuser", { id: selectedUser })
+        .then((userResponse) => setUserData(userResponse.data))
+        .catch((error) => {
+          console.error("Error fetching user", error);
+        });
+    }
   }, [selectedUser]);
 
   const handleSelectionChange = (event) => {

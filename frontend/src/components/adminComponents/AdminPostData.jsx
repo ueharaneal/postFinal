@@ -3,35 +3,24 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function AdminPostData() {
-  const [userNames, setUserNames] = useState([]); // state for all users name
-  const [selectedUser, setSelectedUser] = useState("");
-  const [userData, setUserData] = useState(null); //the data for the selected user
+  const [selectedPost, setSelectedPost] = useState({});
+  const [postData, setPostData] = useState([]); //the data for the selected user
 
   //api call to get all of the user's names
   useEffect(() => {
     const response = axios
-      .get("api/users/getusersnames")
+      .get("api/postdata/selectpost")
       .then((response) => {
-        setUserNames(response.data);
-        console.log(userNames);
+        setPostData(response.data);
       })
       .catch((error) => {
         console.error("there was an error", error);
       });
   }, []);
 
-  // make an api call when the selected user changes
-  useEffect(() => {
-    const userResponse = axios
-      .post("/api/users/getuser", { id: selectedUser })
-      .then((userResponse) => setUserData(userResponse.data))
-      .catch((error) => {
-        console.error("Error fetching user", error);
-      });
-  }, [selectedUser]);
-
   const handleSelectionChange = (event) => {
-    setSelectedUser(event.target.value);
+    const postObject = postData.find((post) => post._id === event.target.value);
+    setSelectedPost(postObject);
   };
   return (
     <div className="flex flex-col gap-y-3 p-4">
@@ -39,44 +28,42 @@ function AdminPostData() {
       <div className="flex flex-col gap-y-3 mr-3 p-4">
         <h2>Select a Post</h2>
         <select
-          name="userNames"
-          id="userNames"
+          name="postName"
+          id="postName"
           onChange={handleSelectionChange}
-          value={selectedUser}
+          value={selectedPost ? selectedPost._id : ""}
           className="block py-2.5 px-0 w-full text-sm text-slate-800 bg-transparent border-0 border-b-4 border-gray-300  dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-indigo-600"
         >
-          <option value="">Select a User</option>
-          {userNames.map((user) => {
+          <option value="">Select a Post</option>
+          {postData.map(({ _id, postName }) => {
             return (
-              <option key={user.id} value={user.id}>
-                {user.firstName} {user.lastName}
+              <option key={_id} value={_id}>
+                {postName}
               </option>
             );
           })}
         </select>
-        {userData && (
+        {selectedPost._id && (
           <div className="flex flex-col gap-y-5">
             <div>
-              <h2>Email</h2>
-              <div>{userData.email} </div>
+              <h2>Post ID</h2>
+              <div>{selectedPost._id} </div>
             </div>
             <div>
-              <h2>Name</h2>
-              <div>
-                {userData.firstName} {userData.lastName}
-              </div>
+              <h2>Location</h2>
+              <div>{selectedPost.postName}</div>
             </div>
             <div>
-              <h2>Password</h2>
-              <div>{userData.password}</div>
+              <h2>Volume Codes</h2>
+              <div></div>
             </div>
             <div>
-              <h2>Role</h2>
-              <div>{userData.role}</div>
+              <h2>Duration Codes</h2>
+              <div></div>
             </div>
             <div>
-              <h2>Date Created</h2>
-              <div>{userData.date}</div>
+              <h2>Admin Code</h2>
+              <div>{selectedPost.adminCode}</div>
             </div>
           </div>
         )}
