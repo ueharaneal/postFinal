@@ -42,7 +42,7 @@ const RegisterFormik = () => {
     try {
       const response = await axios.post("/api/auth/register", values);
       console.log(response);
-      toast.success("Acount Created!");
+      toast.success("Account Created!");
     } catch (error) {
       console.log(error.response?.data);
       if (error.response && error.response.data) {
@@ -72,6 +72,8 @@ const RegisterFormik = () => {
         </motion.h1>
         <Formik
           initialValues={{
+            firstName: "",
+            lastName: "",
             email: "",
             password: "",
             retypePassword: "",
@@ -83,6 +85,47 @@ const RegisterFormik = () => {
           }}
         >
           <Form className="w-full">
+            <motion.div
+              vairants={primaryVariants}
+              className="mb-2 w-full flex flex-row justify-between"
+            >
+              <div className="flex flex-col">
+                <label
+                  htmlFor="firstName"
+                  className="mb-1 inline-block text-sm font-medium"
+                >
+                  First Name
+                </label>
+                <Field
+                  id="firstName"
+                  name="firstName"
+                  type="text"
+                  placeholder="First name"
+                  className="w-50% rounded border-[1px] border-slate-300 px-2.5 py-1.5 focus:outline-indigo-600"
+                />
+                <ErrorMessage
+                  name="firstName"
+                  component="div"
+                  className="text-red-500 text-xs"
+                />
+              </div>
+              <div className="flex flex-col">
+                <label
+                  htmlFor="lastName"
+                  className="mb-1 inline-block text-sm font-medium"
+                >
+                  Last Name
+                </label>
+                <Field
+                  id="lastName"
+                  name="lastName"
+                  type="text"
+                  placeholder='Last name'
+                  className="w-50% rounded border-[1px] border-slate-300 px-2.5 py-1.5 focus:outline-indigo-600"
+                />
+              </div>
+            </motion.div>
+
             <motion.div variants={primaryVariants} className="mb-2 w-full">
               <label
                 htmlFor="email"
@@ -185,7 +228,7 @@ const RegisterFormik = () => {
           </Form>
         </Formik>
       </div>
-      <Toaster position="top-right" richColors/>
+      <Toaster position="top-right" richColors />
     </motion.div>
   );
 };
