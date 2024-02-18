@@ -5,8 +5,9 @@ const userController = {
   async getUsersNames(req, res, next) {
     try {
       const userNames = await userService.getUsersNames();
-      console.log("getUsersName got called");
-      res.status(httpStatus.OK).send(userNames);
+      console.log(userNames);
+
+      res.status(httpStatus.OK).json(userNames);
     } catch (error) {
       res.status(httpStatus.BAD_REQUEST).send(error.message);
     }

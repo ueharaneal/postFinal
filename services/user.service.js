@@ -7,10 +7,10 @@ const findUserByEmail = async (email) => {
 const getUsersNames = async () => {
   try {
     // Retrieve all users but only select firstname and lastname
-    const users = await User.find({}, 'firstname lastname');
+    const users = await User.find({}, 'firstName lastName');
     // Map through the users to extract names
     const names = users.map(user => {
-      return { firstname: user.firstname, lastname: user.lastname };
+      return { id: user._id.toString(), firstName: user.firstName, lastName: user.lastName };
     });
     return names;
   } catch (error) {
