@@ -66,7 +66,7 @@ const RegisterFormik = () => {
       <div className="mx-auto my-auto max-w-lg px-4 md:pr-0">
         <motion.h1
           variants={primaryVariants}
-          className="mb-2 text-center text-4xl font-semibold"
+          className="mb-6 text-center text-4xl font-semibold"
         >
           Create your account
         </motion.h1>
@@ -94,14 +94,14 @@ const RegisterFormik = () => {
                   htmlFor="firstName"
                   className="mb-1 inline-block text-sm font-medium"
                 >
-                  First Name
+                  First Name<span className="text-red-600">*</span>
                 </label>
                 <Field
                   id="firstName"
                   name="firstName"
                   type="text"
                   placeholder="First name"
-                  className="w-50% rounded border-[1px] border-slate-300 px-2.5 py-1.5 focus:outline-indigo-600"
+                  className=" rounded border-[1px] border-slate-300 px-2.5 py-1.5 focus:outline-indigo-600"
                 />
                 <ErrorMessage
                   name="firstName"
@@ -114,14 +114,19 @@ const RegisterFormik = () => {
                   htmlFor="lastName"
                   className="mb-1 inline-block text-sm font-medium"
                 >
-                  Last Name
+                  Last Name<span className="text-red-600">*</span>
                 </label>
                 <Field
                   id="lastName"
                   name="lastName"
                   type="text"
-                  placeholder='Last name'
-                  className="w-50% rounded border-[1px] border-slate-300 px-2.5 py-1.5 focus:outline-indigo-600"
+                  placeholder="Last name"
+                  className="rounded border-[1px] border-slate-300 px-2.5 py-1.5 focus:outline-indigo-600"
+                />
+                <ErrorMessage
+                  name="lastName"
+                  component="div"
+                  className="text-red-500 text-xs"
                 />
               </div>
             </motion.div>
