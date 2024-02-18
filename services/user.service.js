@@ -19,7 +19,17 @@ const getUsersNames = async () => {
   }
 };
 
+const getUser = async(id) =>{
+  try{
+    return await User.findById(id)
+  }catch(error){
+    console.error("Error fetching user:", error);
+    throw error
+  }
+}
+
 module.exports = {
   findUserByEmail,
   getUsersNames,
+  getUser
 };

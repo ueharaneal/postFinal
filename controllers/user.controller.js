@@ -12,6 +12,18 @@ const userController = {
       res.status(httpStatus.BAD_REQUEST).send(error.message);
     }
   },
+
+  async getUser(req,res,next){
+    try{
+      const {id} = req.body 
+      console.log(id)
+      const user = await userService.getUser(id);
+      console.log(user)
+      res.status(httpStatus.OK).json(user)
+    }catch(error){
+      res.status(httpStatus.BAD_REQUEST).send(error.message)
+    }
+  }
 };
 
 module.exports = userController;
