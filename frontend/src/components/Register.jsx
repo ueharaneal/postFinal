@@ -1,10 +1,10 @@
 import React from 'react'
 import RegisterForm from './customUi/RegisterForm.jsx'
 
-function Register() {
+function Register({onRegisterChange}) {
   return (
     <div>
-        <RegisterForm/>
+        <RegisterForm onRegisterChange={onRegisterChange}/>
     </div>
   )
 }

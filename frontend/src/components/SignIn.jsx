@@ -14,18 +14,12 @@ import { toast, Toaster } from "sonner";
 const validationSchema = Yup.object({
   email: Yup.string().email("Invalid email address").required("Required"),
   password: Yup.string().required("Required"),
-  retypePassword: Yup.string()
-    .oneOf([Yup.ref("password"), null], "Passwords must match")
-    .required("Required"),
-  terms: Yup.boolean()
-    .required("Required")
-    .oneOf([true], "Terms must be accepted"),
 });
 
-const RegisterForm = ({ onRegisterChange }) => {
+const SignIn = ({ onRegisterChange }) => {
   return <RegisterFormik onRegisterChange={onRegisterChange} />;
 };
-export default RegisterForm;
+export default SignIn;
 const RegisterFormik = ({ onRegisterChange }) => {
   // Handle form submission
   const handleSubmit = async (values, formikBag) => {
@@ -34,9 +28,9 @@ const RegisterFormik = ({ onRegisterChange }) => {
     setSubmitting(true);
 
     try {
-      const response = await axios.post("/api/auth/register", values);
+      const response = await axios.post("/api/auth/signin", values);
       console.log(response);
-      toast.success("Account Created!");
+      toast.success("Login Successful!");
     } catch (error) {
       console.log("there was an error from toaster");
       console.log(error.response?.data);
@@ -63,16 +57,12 @@ const RegisterFormik = ({ onRegisterChange }) => {
           variants={primaryVariants}
           className="mb-6 text-center text-4xl font-semibold"
         >
-          Create your account
+          Sign in into your account
         </motion.h1>
         <Formik
           initialValues={{
-            firstName: "",
-            lastName: "",
             email: "",
             password: "",
-            retypePassword: "",
-            terms: false,
           }}
           validationSchema={validationSchema}
           onSubmit={(values, formikBag) => {
@@ -80,52 +70,6 @@ const RegisterFormik = ({ onRegisterChange }) => {
           }}
         >
           <Form className="w-full">
-            <motion.div
-              vairants={primaryVariants}
-              className="mb-2 w-full flex flex-row justify-between"
-            >
-              <div className="flex flex-col">
-                <label
-                  htmlFor="firstName"
-                  className="mb-1 inline-block text-sm font-medium"
-                >
-                  First Name<span className="text-red-600">*</span>
-                </label>
-                <Field
-                  id="firstName"
-                  name="firstName"
-                  type="text"
-                  placeholder="First name"
-                  className=" rounded border-[1px] border-slate-300 px-2.5 py-1.5 focus:outline-indigo-600"
-                />
-                <ErrorMessage
-                  name="firstName"
-                  component="div"
-                  className="text-red-500 text-xs"
-                />
-              </div>
-              <div className="flex flex-col">
-                <label
-                  htmlFor="lastName"
-                  className="mb-1 inline-block text-sm font-medium"
-                >
-                  Last Name<span className="text-red-600">*</span>
-                </label>
-                <Field
-                  id="lastName"
-                  name="lastName"
-                  type="text"
-                  placeholder="Last name"
-                  className="rounded border-[1px] border-slate-300 px-2.5 py-1.5 focus:outline-indigo-600"
-                />
-                <ErrorMessage
-                  name="lastName"
-                  component="div"
-                  className="text-red-500 text-xs"
-                />
-              </div>
-            </motion.div>
-
             <motion.div variants={primaryVariants} className="mb-2 w-full">
               <label
                 htmlFor="email"
@@ -168,48 +112,17 @@ const RegisterFormik = ({ onRegisterChange }) => {
               />
             </motion.div>
 
-            <motion.div variants={primaryVariants} className="mb-4 w-full">
-              <label
-                htmlFor="retypePassword"
-                className="mb-1 inline-block text-sm font-medium"
-              >
-                Re-type Password<span className="text-red-600">*</span>
-              </label>
-              <Field
-                id="retypePassword"
-                name="retypePassword"
-                type="password"
-                placeholder="Re-type your password"
-                className="w-full rounded border-[1px] border-slate-300 px-2.5 py-1.5 focus:outline-indigo-600"
-              />
-              <ErrorMessage
-                name="retypePassword"
-                component="div"
-                className="text-red-500 text-xs"
-              />
-            </motion.div>
-
             <motion.div
               variants={primaryVariants}
               className="mb-4 flex w-full items-start gap-1.5"
             >
-              <Field
-                type="checkbox"
-                name="terms"
-                id="terms-checkbox"
-                className="h-4 w-4 accent-indigo-600"
-              />
-              <label htmlFor="terms-checkbox" className="text-xs">
-                By signing up, I agree to the terms and conditions, privacy
-                policy, and cookie policy
-              </label>
               <ErrorMessage
                 name="terms"
                 component="div"
                 className="text-red-500 text-xs"
               />
             </motion.div>
-
+            {/* Sign up button */}
             <motion.button
               variants={primaryVariants}
               whileTap={{ scale: 0.985 }}
@@ -225,7 +138,7 @@ const RegisterFormik = ({ onRegisterChange }) => {
                 className="text-indigo-600 underline cursor-pointer"
                 onClick={onRegisterChange}
               >
-                Sign in
+                Register
               </a>
             </motion.p>
           </Form>
