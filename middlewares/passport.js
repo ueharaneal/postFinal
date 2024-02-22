@@ -8,8 +8,6 @@ jwtOptions = {
 	jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
 }
 
-const jwtVerify = aync()=>{
-
-}
+const jwtVerify = async () => {}
 
 const jwtStrategy = new Strategy()
