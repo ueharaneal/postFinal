@@ -4,8 +4,7 @@ import SelectPostSelection from "../SelectPostSelection";
 function SelectionFinalStep() {
   return (
     <div>
-      <h1 className="text-primary ">Select a Post</h1>
-      Final Step
+      <h1 className="text-primary ">Confirm Information</h1>
     </div>
   );
 }

@@ -8,7 +8,7 @@ const SteppedProgress = ({
   onPrev,
   stepContent,
 }) => {
-  const numSteps = 4;
+  const numSteps = 3;
 
   const handleSetStep = (num) => {
     if (
@@ -32,7 +32,7 @@ const SteppedProgress = ({
           <button
             className="px-4 py-1 rounded hover:bg-gray-100 text-black"
             onClick={onPrev}
-            disabled={currentStep <= 1}
+            disabled={currentStep <= 0}
           >
             Prev
           </button>

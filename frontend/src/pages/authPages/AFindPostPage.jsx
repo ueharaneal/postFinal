@@ -7,7 +7,7 @@ import FinalStep from "@/components/selectPostForm/SelectionFinalStep";
 import SteppedProgress from "@/components/selectPostForm/SteppedProgress";
 
 function AFindPostPage() {
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState({}); // Placeholder for form data handling
 
   const nextStep = () => setCurrentStep(currentStep + 1);
@@ -25,12 +25,12 @@ function AFindPostPage() {
   // This approach ensures that the switch logic is used only to determine the content to be rendered.
   let stepContent;
   switch (currentStep) {
-    case 1:
+    case 0:
       stepContent = (
         <StepOne nextStep={nextStep} handleFormData={handleFormData} />
       );
       break;
-    case 2:
+    case 1:
       stepContent = (
         <StepTwo
           nextStep={nextStep}
@@ -39,7 +39,7 @@ function AFindPostPage() {
         />
       );
       break;
-    case 3:
+    case 2:
       stepContent = (
         <FinalStep handleSubmit={handleSubmit} prevStep={prevStep} />
       );
