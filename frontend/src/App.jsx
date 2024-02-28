@@ -6,6 +6,9 @@ import AboutPage from "./pages/AboutPage"
 import FindPostPage from "./pages/FindPostPage"
 import AdminPage from "./pages/AdminPage"
 
+//guardedRoutes
+import AFindPostPage from "./pages/authPages/AFindPostPage"
+
 import NavBar from "./components/NavBar"
 
 function App() {
@@ -20,6 +23,8 @@ function App() {
 					<Route path='/findapost' element={<FindPostPage />} />
 					<Route path='/signin' element={<SignInPage />}></Route>
 					<Route path='/admin' element={<AdminPage />}></Route>
+
+					<Route path='/findapost/auth' element={<AFindPostPage/>}></Route>
 				</Routes>
 			</BrowserRouter>
 		</>
