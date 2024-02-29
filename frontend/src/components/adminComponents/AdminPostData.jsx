@@ -27,14 +27,37 @@ function AdminPostData() {
   const volCodeArrayContent =
     selectedPost && selectedPost.volCodeArray
       ? selectedPost.volCodeArray.map((codeArray, index) => {
+          const indexNames = ["Zero", "One", "Two", "Three"]; // Adjust this array if you have more indexes
+          const volCodeIndexPropName = `volCodeIndex${indexNames[index]}`;
+
+          const currentIteration = selectedPost[volCodeIndexPropName];
+          const currentCode = codeArray[currentIteration];
           return (
-            <div key={index}>
-              <h3>Array {index + 1}</h3>
-              <ul>
+            <div className="flex flex-col my-2" key={index}>
+              <div className="flex flex-col gap-x-2">
+                <h3 className="font-bold">Array {index + 1}</h3>
+                <h4>
+                  Current Iteration:{" "}
+                  <span className="font-bold border-black border-b-2">
+                    {currentIteration}
+                  </span>
+                </h4>
+                <h4>
+                  Current Code:{" "}
+                  <span className="font-bold border-black border-b-2">
+                    {currentCode}
+                  </span>
+                </h4>
+              </div>
+              <div className="flex flex-row">
                 {codeArray.map((code, codeIndex) => {
-                  return <li key={codeIndex}>{code}</li>;
+                  return (
+                    <div className="my-2" key={codeIndex}>
+                      {code},
+                    </div>
+                  );
                 })}
-              </ul>
+              </div>
             </div>
           );
         })
@@ -44,13 +67,34 @@ function AdminPostData() {
   const durCodeArrayContent =
     selectedPost && selectedPost.durCodeArray
       ? selectedPost.durCodeArray.map((codeArray, index) => {
+          //we need to create a list of the suffix
+          const indexNames = ["Zero", "One", "Two", "Three"];
+          const durCodeIndexPropName = `durCodeIndex${indexNames[index]}`;
+
+          const currentIteration = selectedPost[durCodeIndexPropName];
+
+          const currentArrayCode = codeArray[currentIteration];
           return (
-            <div className="flex flex-col my-2">
-              <h3 className="font-bold">Array {index + 1}</h3>
+            <div key={index} className="flex flex-col my-2">
+              <div className="flex flex-col gap-x-2">
+                <h3 className="font-bold">Array {index + 1}</h3>
+                <h4 className="font-heavy">
+                  Current Iteration:{" "}
+                  <span className="border-black border-b-2 font-bold">
+                    {currentIteration}
+                  </span>
+                </h4>
+                <h4 className="font-heavy">
+                  Current Code:{" "}
+                  <span className="border-black border-b-2 font-bold">
+                    {currentArrayCode}
+                  </span>
+                </h4>
+              </div>
               <div className="flex flex-row">
                 {codeArray.map((code, index) => {
                   return (
-                    <div className="my-2" key={code}>
+                    <div className="my-2" key={index}>
                       {code},
                     </div>
                   );
