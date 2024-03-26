@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FiArrowUpRight, FiStar } from "react-icons/fi";
+
 
 //fetching data
 import axios from "axios";
