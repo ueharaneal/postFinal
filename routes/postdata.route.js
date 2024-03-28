@@ -8,7 +8,7 @@ router.use("/", (req, res, next) => {
 	next();
 })
 
-router.get("/selectpost", postDataController.selectPost)
+router.post("/getAccessCodes/postId",auth(), postDataController.getAcessCodes)
 
 //get post index
 //router.get('/selectedPost/, getPostPassword)
