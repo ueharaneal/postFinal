@@ -11,6 +11,6 @@ router.use("/", (req, res, next) => {
 router.post("/getAccessCodes/postId",auth(), postDataController.getAcessCodes)
 
 //get post index
-//router.get('/selectedPost/, getPostPassword)
+//router.get('/selectedPost/, getPostPassword) ()
 
 module.exports = router
