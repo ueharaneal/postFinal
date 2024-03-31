@@ -20,6 +20,15 @@ const retrievePostNames = async() =>{
     }
 }
 
+const generateAccessCodes = (body) =>{
+    try{
+        //we first need to find the post id and iterate throught the code increasing the given index
+        //return the code's index and add it with the volume index then return the code 
+        
+    }catch(error){throw error}
+}
+
 module.exports = {
-    retrievePostNames
+    retrievePostNames,
+    generateAccessCodes
 }

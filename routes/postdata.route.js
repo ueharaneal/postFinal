@@ -8,7 +8,8 @@ router.use("/", (req, res, next) => {
 	next();
 })
 
-router.post("/getAccessCodes/postId",auth(), postDataController.getAcessCodes)
+//requires. postID and duration choice
+router.post("/getAccessCodes/postId", postDataController.getAccessCodes)
 
 //get post index
 //router.get('/selectedPost/, getPostPassword) ()

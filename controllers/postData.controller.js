@@ -11,6 +11,15 @@ const postDataController = {
       res.status(httpStatus.BAD_REQUEST).send(error.message);
     }
   },
+
+  async getAccessCodes(req,res,next){
+    try{
+      const accessCodes = postDataService.generateAccessCodes(req.body)
+      return accessCodes
+    }catch(error){
+      res.status(httpStatus.BAD_REQUEST).send(error.message)
+    }
+  }
 };
 
 module.exports = postDataController;
