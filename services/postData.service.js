@@ -30,5 +30,5 @@ const generateAccessCodes = (body) =>{
 
 module.exports = {
     retrievePostNames,
-    generateAccessCodes
+    generateAccessCodes,
 }
