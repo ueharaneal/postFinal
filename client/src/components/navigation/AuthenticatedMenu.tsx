@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { UserState } from "@/store/reducers/users";
 import { Link } from "react-router-dom";
 import { AppDispatch } from "@/store";
-import { useNavigate } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -31,12 +31,7 @@ function AuthenticatedMenu({ users }: { users: UserState }) {
       <NavigationMenu orientation="vertical" className="">
         <NavigationMenuList className="gap-x-3">
           <NavigationMenuItem>
-            <NavigationMenuTrigger>Item One</NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <NavigationMenuLink className="navigationMenuTriggerStyle bg-primary">
-                Link
-              </NavigationMenuLink>
-            </NavigationMenuContent>
+            <Link>About</Link>
           </NavigationMenuItem>
           {users.auth ? (
             <NavigationMenuItem>
