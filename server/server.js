@@ -7,11 +7,11 @@ const { xss } = require("express-xss-sanitizer")
 const mongoSanitize = require("express-mongo-sanitize")
 
 const app = express()
-const port = process.env.PORT || 3001
+const port = process.env.PORT || 3002
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-const routes = require("./routes")
+const routes = require("./routes/index.js")
 const connectDb = require("./models/db.js")
 
 const { handleError, convertToApiError } = require("./middlewares/apiError.js")

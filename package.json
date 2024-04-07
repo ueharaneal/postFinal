@@ -30,9 +30,9 @@
 	"main": "server.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"server": "nodemon server.js",
-		"start-frontend": "cd frontend && npm run dev",
-		"dev": "concurrently \"npm run server\" \"npm run start-frontend\""
+		"server": "cd server && nodemon server.js",
+		"start-client": "cd client && npm run dev",
+		"dev": "concurrently \"npm run server\" \"npm run start-client\""
 	},
 	"author": "",
 	"license": "ISC",
