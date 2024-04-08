@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef, useState } from "react";
-
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/utils/cn";
 
@@ -89,7 +88,7 @@ export const DirectionAwareHover = ({
             <img
               alt="image"
               className={cn(
-                "h-full w-full object-cover scale-[1.15] bg-gray-50 dark:bg-black",
+                "h-full w-full object-cover scale-[1.15]",
                 imageClassName
               )}
               width="1000"

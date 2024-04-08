@@ -1,5 +1,5 @@
 import Hero from "@/components/home/Hero";
-import HowItWorks from "@/components/home/HowItWorks";
+import WhoFor from "@/components/home/WhoFor";
 import { Spotlight } from "@/components/ui/Spotlight.tsx";
 function Home() {
   return (
@@ -23,7 +23,8 @@ function Home() {
       <div className="h-5/6 mt-64">
         <Hero />
       </div>
-      <HowItWorks />
+
+      <WhoFor />
     </div>
   );
 }
