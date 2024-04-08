@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { UserState } from "@/store/reducers/users";
 import { Link } from "react-router-dom";
 import { AppDispatch } from "@/store";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -15,44 +15,34 @@ import {
   NavigationMenuViewport,
 } from "@ui/navigation-menu";
 
+import { MovingButton } from "@/components/ui/moving-border";
 import HeaderDropDown from "./HeaderDropDown";
 import { ModeToggle } from "../theme/mode-toggle";
 import { signOut } from "@/store/actions/users";
 import { Button } from "../ui/button";
-function AuthenticatedMenu({ users }: { users: UserState }) {
+function UnauthenticatedMenu({ users }: { users: UserState }) {
   const dispatch = useDispatch<AppDispatch>();
   let navigate = useNavigate();
   const signUserOut: VoidFunction = () => {
     dispatch(signOut() as any).then(() => navigate("/"));
   };
-
   return (
     <div className="">
       <NavigationMenu orientation="vertical" className="">
         <NavigationMenuList className="gap-x-3">
           <NavigationMenuItem>
-            <Link>How it Works</Link>
+            <Link to='/'>Home</Link>
           </NavigationMenuItem>
-          {users.auth ? (
-            <NavigationMenuItem>
-              {" "}
-              <Button onClick={() => signUserOut()}>Logout</Button>
-            </NavigationMenuItem>
-          ) : (
-            <NavigationMenuItem>
-              <Link to="/auth">Log In</Link>
-            </NavigationMenuItem>
-          )}
           <NavigationMenuItem>
-            <NavigationMenuContent>
-              <NavigationMenuLink>Link2</NavigationMenuLink>
-            </NavigationMenuContent>
+            <Link to='/about'>About</Link>
           </NavigationMenuItem>
-          {users.auth && (
-            <NavigationMenuItem>
-              <HeaderDropDown />
-            </NavigationMenuItem>
-          )}
+          <NavigationMenuItem>
+            <Link to="/auth">Log In</Link>
+          </NavigationMenuItem>
+
+          <NavigationMenuItem>
+            <MovingButton className="">Make an appointment</MovingButton>
+          </NavigationMenuItem>
           <NavigationMenuItem>
             <ModeToggle />
           </NavigationMenuItem>
@@ -63,4 +53,4 @@ function AuthenticatedMenu({ users }: { users: UserState }) {
   );
 }
 
-export default AuthenticatedMenu;
+export default UnauthenticatedMenu;

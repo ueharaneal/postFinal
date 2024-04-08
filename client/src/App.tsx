@@ -11,6 +11,8 @@ import { LargeLoader } from "./components/common/utils";
 import Home from "./pages/Home";
 import Auth from "./components/auth";
 import Header from "./components/navigation/Header";
+import About from './pages/About'
+import Footer from "./components/navigation/Footer";
 
 import DashboardMain from "./components/dashboard/DashboardMain";
 import Dashboard from "./components/dashboard";
@@ -35,7 +37,7 @@ function App() {
           <LargeLoader />
         ) : (
           <>
-            <Header />
+            <Header/>
             <MainLayout>
               <Routes>
                 <Route
@@ -50,8 +52,10 @@ function App() {
                 </Route>
                 <Route path="/auth" element={<Auth />}></Route>
                 <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
               </Routes>
             </MainLayout>
+            <Footer/>
           </>
         )}
       </BrowserRouter>
