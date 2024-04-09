@@ -13,7 +13,7 @@ function Dashboard() {
       {isSmallScreen ? (
         <div>small Screen nav</div>
       ) : (
-        <div className='flex flex-row h-full mt-28 overflow-y-clip'>
+        <div className='flex flex-row h-[800px] mt-36 overflow-y-clip'>
           <Navigation/>
           <Outlet />
         </div>

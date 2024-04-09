@@ -35,7 +35,7 @@ function AuthenticatedMenu({ users }: { users: UserState }) {
           </NavigationMenuItem>
           <NavigationMenuItem>
             <Button>
-            <Link to="/Dashboard">Dashboard</Link>
+            <Link to="/Dashboard/overview">Dashboard</Link>
             </Button>
           </NavigationMenuItem>
 

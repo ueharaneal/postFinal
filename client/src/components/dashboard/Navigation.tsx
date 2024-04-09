@@ -7,29 +7,29 @@ import { UserCog } from 'lucide-react';
 function Navigation() {
   return (
     <div>
-      <aside className="w-64 bg-card border-ring border-r-2">
-        <div className="h-16 flex items-center justify-center border-b-1">
-          <h2 className="text-2xl font-semibold text-foreground">
+      <aside className="w-64 bg-card border-border border-r-2 h-screen">
+        <div className="h-16 flex items-center justify-center border-border border-b-2">
+          <h2 className="text-2xl mb-2 font-semibold  text-foreground">
             Dashboard
           </h2>
         </div>
         <ul>
           <li className="flex items-center hover:bg-muted">
-            <Link className="flex items-center p-6 space-x-4" to="/dashboard/overview">
-              <Home className="h-5 w-5 text-foreground" />
-              <span className="text-sm font-medium">Overview</span>
+            <Link className="flex items-center p-6 pr-32 space-x-4" to="/dashboard/overview">
+              <Home className="h-6 w-6 text-foreground" />
+              <span className="text-base font-medium">Overview</span>
             </Link>
           </li>
           <li className="flex items-center hover:bg-accent">
-            <Link className="flex items-center p-6 space-x-4" to="/dashboard/schedulesession">
-              <CalendarCheck2 className="h-5 w-5 text-foreground" />
-              <span className="text-sm font-medium">Schedule Sessions</span>
+            <Link className="flex items-center p-6  pr-10 space-x-4" to="/dashboard/schedulesession">
+              <CalendarCheck2 className="h-6 w-6 text-foreground" />
+              <span className="text-base font-medium">Schedule Sessions</span>
             </Link>
           </li>
           <li className="flex items-center hover:bg-accent">
-            <Link className="flex items-center  p-6 space-x-4" to="/dashboard/profile">
-              <UserCog className="h-5 w-5 text-foreground" />
-              <span className="text-sm font-medium">Profile</span>
+            <Link className="flex items-center  p-6 pr-32 space-x-4" to="/dashboard/profile">
+              <UserCog className="h-6 w-6 text-foreground" />
+              <span className="text-base font-medium">Profile</span>
             </Link>
           </li>
         </ul>
