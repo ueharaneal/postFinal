@@ -1,20 +1,29 @@
 
-import { Outlet, Link } from 'react-router-dom'
+import { Outlet, Routes, Route } from 'react-router-dom';
+import useMediaQuery from '@/utils/useMediaQuery';
+import ScheduleSession from './ScheduleSession';
+import Overview from './Overview';
+import Navigation from './Navigation';
+import Profile from './Profile';
 function Dashboard() {
+  const isSmallScreen = useMediaQuery('(max-width: 768px)');
+
   return (
-    <div>
-      <h1>Dashboard</h1>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/dashboard">Main</Link>
-          </li>
-          <li>
-            <Link to="/schedulesession">Schdule Session</Link>
-          </li>
-        </ul>
-      </nav>
-      <Outlet />
+    <div className='z-50'>
+      {isSmallScreen ? (
+        <div>small Screen nav</div>
+      ) : (
+        <div className='flex flex-row h-full mt-28 overflow-y-clip'>
+          <Navigation/>
+          <Outlet />
+        </div>
+      )}
+      <Routes>
+        <Route path="/dashboard/overview" element={<Overview />} />
+        <Route path="/dashboard/schedulesession" element={<ScheduleSession />} />
+        <Route path="/dashboard/profile" element={<Profile />} />
+
+      </Routes>
     </div>
   );
 }

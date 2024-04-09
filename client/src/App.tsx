@@ -15,10 +15,10 @@ import About from "./pages/About";
 import Footer from "./components/navigation/Footer";
 
 import DashboardMain from "./components/dashboard/DashboardMain";
-import Dashboard from "./components/dashboard/DashboardRoutes";
 import AuthGuard from "./components/hoc/AuthGuard";
-import DashboardRoutes from "./components/dashboard/DashboardRoutes";
 import ScheduleSession from "./components/dashboard/ScheduleSession";
+import Overview from "./components/dashboard/Overview";
+import Profile from "./components/dashboard/Profile";
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
   const dispatch = useDispatch<AppDispatch>();
@@ -46,14 +46,16 @@ function App() {
                   path="/dashboard"
                   element={
                     <AuthGuard>
-                      <Dashboard />
+                      <DashboardMain />
                     </AuthGuard>
                   }
                 >
                   <Route
-                    path="scheduleSession"
+                    path="schedulesession"
                     element={<ScheduleSession />}
                   />
+                  <Route path="/dashboard/overview" element={<Overview />} />
+                  <Route path="/dashboard/profile" element={<Profile />} />
                 </Route>
                 <Route path="/auth" element={<Auth />}></Route>
                 <Route path="/" element={<Home />} />

@@ -44,10 +44,9 @@ const userSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  terms:{
+  terms: {
     type: Boolean,
-
-  }
+  },
 });
 
 //check to see if the email exist
@@ -57,8 +56,9 @@ userSchema.statics.isEmailTaken = async function (email) {
 };
 
 //generate auth token for new user
-userSchema.methods.generateAuthToken = async function () {
-  const userObj = { sub: this._id.toHexString(), email: this.email };
+userSchema.methods.generateAuthToken = function () {
+  let user = this;
+  const userObj = { sub: user._id.toHexString(), email: user.email };
   const token = jwt.sign(userObj, process.env.DB_SECRET, { expiresIn: "1d" });
   return token;
 };
@@ -84,12 +84,12 @@ userSchema.methods.comparePasswords = async function (candidatePassword) {
   return match;
 };
 
-userSchema.methods.generateRegisterToken = function(){
+userSchema.methods.generateRegisterToken = function () {
   let user = this;
-  const userObj = {sub:user._id.toHexString(), email: user.email};
-  const token = jwt.sign(userObj, process.env.DB_SECRET, {expiresIn:"1d"});
-  return token; 
-}
+  const userObj = { sub: user._id.toHexString(), email: user.email };
+  const token = jwt.sign(userObj, process.env.DB_SECRET, { expiresIn: "1d" });
+  return token;
+};
 const User = mongoose.model("User", userSchema);
 
 module.exports = { User };

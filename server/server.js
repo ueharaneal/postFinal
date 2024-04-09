@@ -5,7 +5,8 @@ const cors = require("cors")
 const httpStatus = require("http-status")
 const { xss } = require("express-xss-sanitizer")
 const mongoSanitize = require("express-mongo-sanitize")
-
+const passport = require('passport');
+const { jwtStrategy } = require('./middlewares/passport.js');
 const app = express()
 const port = process.env.PORT || 3002
 app.use(bodyParser.json())
@@ -30,6 +31,9 @@ app.use(cors(corsOptions))
 app.use(mongoSanitize())
 app.use(xss())
 
+//passport 
+app.use(passport.initialize());
+passport.use('jwt',jwtStrategy)
 //open database connection when application starts
 
 app.use("/api", routes)

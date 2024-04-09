@@ -15,7 +15,7 @@ const PreventSignIn: React.FC<PropTypes> = (props) => {
   return (
     <>
       {isAuthenticated ? (
-        <Navigate to="/dashboard" state={{ from: location }} replace />
+        <Navigate to="/dashboard/overview" state={{ from: location }} replace />
       ) : (
         props.children
       )}
