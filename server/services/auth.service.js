@@ -3,7 +3,7 @@ const { User } = require("../models/users")
 const userService = require("./user.service")
 const { ApiError } = require("../middlewares/apiError")
 
-const createUser = async (firstName, lastName, email, password, terms) => {
+const createUser = async (firstName, lastName, email, password) => {
 	try {
 		if (await User.isEmailTaken(email)) {
 			throw new ApiError(httpStatus.BAD_REQUEST, "Sorry email taken")
@@ -13,7 +13,6 @@ const createUser = async (firstName, lastName, email, password, terms) => {
 			lastName,
 			email,
 			password,
-			terms
 		})
 		
 		await user.save()
@@ -23,7 +22,7 @@ const createUser = async (firstName, lastName, email, password, terms) => {
 	}
 }
 
-const genAuthToken = user => {
+const genAuthToken = (user) => {
 	const token = user.generateAuthToken()
 	return token
 }

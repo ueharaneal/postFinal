@@ -67,6 +67,7 @@ export const isAuth = createAsyncThunk<{ data: any; auth: boolean }, void>(
   async () => {
     try {
       const request = await axios.get("/api/auth/isauth", getAuthHeader());
+      console.log("is auth says your authenticated")
       return { data: request.data, auth: true };
     } catch (error) {
       return { data: {}, auth: false };

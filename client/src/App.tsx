@@ -11,19 +11,21 @@ import { LargeLoader } from "./components/common/utils";
 import Home from "./pages/Home";
 import Auth from "./components/auth";
 import Header from "./components/navigation/Header";
-import About from './pages/About'
+import About from "./pages/About";
 import Footer from "./components/navigation/Footer";
 
 import DashboardMain from "./components/dashboard/DashboardMain";
-import Dashboard from "./components/dashboard";
+import Dashboard from "./components/dashboard/DashboardRoutes";
 import AuthGuard from "./components/hoc/AuthGuard";
+import DashboardRoutes from "./components/dashboard/DashboardRoutes";
+import ScheduleSession from "./components/dashboard/ScheduleSession";
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
   const dispatch = useDispatch<AppDispatch>();
   const users = useSelector((state: RootState) => state.users);
 
   useEffect(() => {
-    dispatch(isAuth());
+    dispatch(isAuth() as any);
   }, []);
   useEffect(() => {
     if (users.auth !== null) {
@@ -37,7 +39,7 @@ function App() {
           <LargeLoader />
         ) : (
           <>
-            <Header/>
+            <Header />
             <MainLayout>
               <Routes>
                 <Route
@@ -48,14 +50,17 @@ function App() {
                     </AuthGuard>
                   }
                 >
-                  <Route index element={<DashboardMain />} />
+                  <Route
+                    path="scheduleSession"
+                    element={<ScheduleSession />}
+                  />
                 </Route>
                 <Route path="/auth" element={<Auth />}></Route>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
               </Routes>
-            <Footer/>
             </MainLayout>
+            <Footer />
           </>
         )}
       </BrowserRouter>

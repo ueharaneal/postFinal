@@ -46,7 +46,7 @@ const userSchema = new Schema({
   },
   terms:{
     type: Boolean,
-    required: [true, 'You must agree to the terms and conditions.']
+
   }
 });
 
@@ -83,6 +83,13 @@ userSchema.methods.comparePasswords = async function (candidatePassword) {
   const match = await bcrypt.compare(candidatePassword, user.password);
   return match;
 };
+
+userSchema.methods.generateRegisterToken = function(){
+  let user = this;
+  const userObj = {sub:user._id.toHexString(), email: user.email};
+  const token = jwt.sign(userObj, process.env.DB_SECRET, {expiresIn:"1d"});
+  return token; 
+}
 const User = mongoose.model("User", userSchema);
 
 module.exports = { User };

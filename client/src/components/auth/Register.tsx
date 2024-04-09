@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState, AppDispatch } from "@/store";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "@/store";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodString, zodEmail, zodPassword } from "@lib/zod-utils.ts";
@@ -22,6 +22,9 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
+type LoginProps = {
+  onIsRegisterChange: () => void; // Adjust the type if `onIsRegisterChange` takes arguments or has a different return type
+}; 
 const baseSchema = z.object({
   email: zodEmail(),
   password: zodPassword(),
@@ -29,7 +32,7 @@ const baseSchema = z.object({
   lastname: zodString({ minLen: 1 }),
 });
 
-function Register({ onIsRegisterChange }) {
+function Register({ onIsRegisterChange } : LoginProps) {
   //reducx
   const dispatch = useDispatch<AppDispatch>();
 
@@ -49,15 +52,13 @@ function Register({ onIsRegisterChange }) {
   const onSubmit: SubmitHandler<FormFields> = async (values) => {
     console.log("submited");
     try {
-      console.log("submitted Register");
       dispatch(registerUser(values) as any);
       toast({
         title: "Success",
         description: "Login successful",
         variant: "success",
       });
-      console.log(values);
-    } catch (error) {
+    } catch (error: any) {
       setError("root", {
         message: error.data.message,
       });
@@ -89,7 +90,7 @@ function Register({ onIsRegisterChange }) {
   }, [errors.email, errors.password]);
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col h-screen justify-center items-center">
       <form onSubmit={handleSubmit(onSubmit)}>
         <Card className="mx-auto max-w-lg p-6">
           <CardHeader>

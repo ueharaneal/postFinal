@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState, AppDispatch } from "@/store";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "@/store";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
-import { zodString, zodEmail, zodPassword } from "@lib/zod-utils.ts";
+import { zodEmail, zodPassword } from "@lib/zod-utils.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signInUser } from "@/store/actions/users";
 
@@ -21,17 +21,19 @@ import {
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { LogIn } from "lucide-react";
+
+type LoginProps = {
+  onIsRegisterChange: () => void;
+};
 
 const baseSchema = z.object({
   email: zodEmail(),
   password: zodPassword(),
 });
 
-function Login({ onIsRegisterChange }) {
+function Login({ onIsRegisterChange }: LoginProps) {
   //reducx
   const dispatch = useDispatch<AppDispatch>();
-  const users = useSelector((state: RootState) => state.users);
   type FormFields = z.infer<typeof baseSchema>;
 
   const {
@@ -47,15 +49,14 @@ function Login({ onIsRegisterChange }) {
 
   const onSubmit: SubmitHandler<FormFields> = async (values) => {
     try {
-      console.log("submitted sigin");
+
       dispatch(signInUser(values) as any);
       toast({
         title: "Success",
         description: "Login successful",
         variant: "success",
       });
-      console.log(values);
-    } catch (error) {
+    } catch (error:any) {
       setError("root", {
         message: error.data.message,
       });
@@ -81,7 +82,7 @@ function Login({ onIsRegisterChange }) {
   }, [errors.email, errors.password]);
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center h-screen">
       <form onSubmit={handleSubmit(onSubmit)}>
         <Card className="mx-auto max-w-lg p-6">
           <CardHeader>

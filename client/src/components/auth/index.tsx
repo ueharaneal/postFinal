@@ -1,10 +1,10 @@
 //improved flow 
 import PreventSignIn from "../hoc/PreventSignIn.tsx";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Login from "./Login.tsx";
 import Register from "./Register.tsx";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState, AppDispatch } from "@/store";
+import { useSelector} from "react-redux";
+import { RootState} from "@/store";
 
 function index() {
     const users = useSelector((state: RootState) => state.users);

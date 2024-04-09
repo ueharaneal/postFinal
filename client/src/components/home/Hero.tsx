@@ -9,7 +9,7 @@ export default function Hero() {
           PFRM <br /> Smart Busking Speakers
         </h1>
         <p className="mt-4 font-normal text-sm md:text-base text-popover-foreground max-w-lg text-center mx-auto">
-          Performing has never been easier
+          Busking has never been easier
         </p>
       </div>
     </div>
