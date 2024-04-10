@@ -73,9 +73,9 @@ function Login({ onIsRegisterChange }: LoginProps) {
       toast({
         title: "Error",
         description:
-          (errors.email?.message || "") +
+          (errors.email.message || "") +
           " " +
-          (errors.password?.message || ""),
+          (errors.password.message || ""),
         variant: "destructive",
       });
     }
