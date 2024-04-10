@@ -35,22 +35,24 @@ function Login({ onIsRegisterChange }: LoginProps) {
   //reducx
   const dispatch = useDispatch<AppDispatch>();
   type FormFields = z.infer<typeof baseSchema>;
-
+  type RequiredFormFields = {
+    [K in keyof FormFields]-?: FormFields[K];
+  };
   const {
     register,
     handleSubmit,
     setError,
     formState: { errors, isSubmitting },
-  } = useForm<FormFields>({
+  } = useForm<RequiredFormFields>({
     resolver: zodResolver(baseSchema),
   });
 
   //making the firstname and lastname required on isRegisterd
 
-  const onSubmit: SubmitHandler<FormFields> = async (values) => {
+  const onSubmit: SubmitHandler<RequiredFormFields> = async (values: RequiredFormFields) => {
     try {
 
-      dispatch(signInUser(values) as any);
+      dispatch(signInUser(values));
       toast({
         title: "Success",
         description: "Login successful",
@@ -73,9 +75,9 @@ function Login({ onIsRegisterChange }: LoginProps) {
       toast({
         title: "Error",
         description:
-          (errors.email?.message || "") +
+          (errors.email.message || "") +
           " " +
-          (errors.password?.message || ""),
+          (errors.password.message || ""),
         variant: "destructive",
       });
     }

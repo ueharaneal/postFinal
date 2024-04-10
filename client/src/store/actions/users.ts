@@ -42,25 +42,24 @@ export const registerUser = createAsyncThunk<
   }
 );
 
-export const signInUser = createAsyncThunk<
-  { data: UserData; auth: boolean },
-  SignInArgs,
-  { dispatch: AppDispatch }
->("users/signInUser", async ({ email, password }, { dispatch }) => {
-  try {
-    const request = await axios.post("/api/auth/signin", {
-      email,
-      password,
-    });
-    //show a message
-    console.log("itworked");
-    console.log(request);
-    return { data: request.data.user, auth: true };
-  } catch (error) {
-    console.error(error);
-    throw error;
+export const signInUser = createAsyncThunk(
+  "users/signInUser",
+  async ({ email, password }: SignInArgs) => {
+    try {
+      const request = await axios.post("/api/auth/signin", {
+        email,
+        password,
+      });
+      console.log("it worked");
+      console.log(request);
+      return { data: request.data.user, auth: true };
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
   }
-});
+);
+
 
 export const isAuth = createAsyncThunk<{ data: any; auth: boolean }, void>(
   "users/isAuth",

@@ -77,13 +77,13 @@ function Register({ onIsRegisterChange } : LoginProps) {
       toast({
         title: "Error",
         description:
-          (errors.email?.message || "") +
+          (errors.email.message || "") +
           " " +
-          (errors.password?.message || "") +
+          (errors.password.message || "") +
           " " +
-          (errors.firstname?.message || "") +
+          (errors.firstname.message || "") +
           " " +
-          (errors.lastname?.message || ""),
+          (errors.lastname.message || ""),
         variant: "destructive",
       });
     }
