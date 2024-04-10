@@ -1,10 +1,8 @@
-import { useRef, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { cn } from "@/utils/cn";
+
 import { DirectionAwareHover } from "../ui/direction-aware-hover";
 
-import perform from "../../../assets/perform.jpeg";
-import modelwithview from "../../../assets/modelwithview.webp";
+import perform from "@/assets/perform.jpeg";
+import modelwithview from "@/assets/modelwithview.jpeg"
 
 const imageList = [];
 
@@ -42,10 +40,9 @@ function WhoFor() {
           <DirectionAwareHover imageUrl={modelwithview}>
             <p className="font-bold text-xl">A Property Owner</p>
             <p className="font-normal text-sm">
-              Rent one of our models to place on property 
-              <br/>
-              to captivate a lively
-              crowd and unmatched energy.
+              Rent one of our models to place on property
+              <br />
+              to captivate a lively crowd and unmatched energy.
             </p>
           </DirectionAwareHover>
           <div className="flex flex-col my-1 md:hidden">

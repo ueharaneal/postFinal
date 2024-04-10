@@ -4,7 +4,6 @@ import UserReducer from "./reducers/users";
 import SiteReducer from "./reducers/site";
 import NotificationsReducer from "./reducers/notifications";
 import ArticlesReducer from "./reducers/articles";
-import { TypedUseSelectorHook, useDispatch } from "react-redux";
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +12,7 @@ export const store = configureStore({
     aritcles: ArticlesReducer,
     notifications: NotificationsReducer,
   },
+  devTools:false
 });
 
 export type RootState = ReturnType<typeof store.getState> 

@@ -6,7 +6,7 @@ import CreateSessionForm from "./CreateSessionForm";
 
 const SteppedProgress = () => {
   const [stepsComplete, setStepsComplete] = useState(0);
-  const numSteps = 4;
+  const numSteps = 3;
 
   const handleSetStep = (num: any) => {
     if (
@@ -48,7 +48,7 @@ const Steps = ({ numSteps, stepsComplete }: any) => {
   const stepArray = Array.from(Array(numSteps).keys());
 
   return (
-    <div className="flex items-center justify-between gap-3 text-sans">
+    <div className="flex items-center justify-between gap-3 text-sans w-full">
       {stepArray.map((num) => {
         const stepNum = num + 1;
         const isActive = stepNum <= stepsComplete;

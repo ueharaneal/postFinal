@@ -31,6 +31,8 @@ import { Calendar as CalendarIcon } from "lucide-react"
  
 import { format } from "date-fns"
 import { cn } from "@/lib/utils"
+
+
 function CreateSessionForm() {
   const form = useForm({
     resolver: zodResolver(ScheduleSchema),
@@ -151,12 +153,13 @@ function CreateSessionForm() {
                     <PopoverContent className="w-auto p-0" align="start">
                       <Calendar
                         mode="single"
-                        selected={field.value}
+                        selected={field.value ? new Date(field.value) : undefined}
                         onSelect={field.onChange}
                         disabled={(date) =>
                           date > new Date() || date < new Date("1900-01-01")
                         }
                         initialFocus
+
                       />
                     </PopoverContent>
                   </Popover>
