@@ -20,7 +20,7 @@ function Home() {
         className="-top-50 left-0 md:left-60 md:-top-20 "
         fill="purple"
       />
-      <div className="h-5/6 mt-64">
+      <div className="h-5/6 mt-48">
         <Hero />
       </div>
 

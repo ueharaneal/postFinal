@@ -3,8 +3,8 @@ import { DirectionAwareHover } from "../ui/direction-aware-hover";
 
 import perform from "@/assets/perform.jpeg";
 import modelwithview from "@/assets/modelwithview.jpeg"
+import audience from "@/assets/audience.jpeg"
 
-const imageList = [];
 
 function WhoFor() {
   const imageUrl =
@@ -56,7 +56,7 @@ function WhoFor() {
           </div>
         </div>
         <div className="h-[30rem] relative  flex flex-col items-center justify-center">
-          <DirectionAwareHover imageUrl={imageUrl}>
+          <DirectionAwareHover imageUrl={audience}>
             <p className="font-bold text-xl">Looking for a show</p>
             <p className="font-normal text-sm">Like music? </p>
             <p className="font-normal text-sm">

@@ -15,9 +15,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { User } from "lucide-react";
 import { useToast } from "../ui/use-toast";
-
-function HeaderDropDown() {
-  const {toast} = useToast()
+import { Link } from "react-router-dom";
+function HeaderDropDown({ signUserOut }) {
+  const { toast } = useToast();
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="hover:bg-accent p-4 rounded-md ">
@@ -37,10 +37,22 @@ function HeaderDropDown() {
           </button>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>Profile</DropdownMenuItem>
-        <DropdownMenuItem>Billing</DropdownMenuItem>
-        <DropdownMenuItem>Team</DropdownMenuItem>
-        <DropdownMenuItem>Subscription</DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link to="/dashboard/profile">Profile</Link>
+        </DropdownMenuItem>
+
+        <DropdownMenuItem>
+          <Link to="/dashboard/overview">Upcoming Sessions</Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link to="/dashboard/schedulesession">Schedule Sessions</Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          {" "}
+          <Button size="sm" variant="destructive" onClick={() => signUserOut()}>
+            Logout
+          </Button>
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

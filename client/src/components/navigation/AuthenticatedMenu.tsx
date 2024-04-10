@@ -19,7 +19,7 @@ import HeaderDropDown from "./HeaderDropDown";
 import { ModeToggle } from "../theme/mode-toggle";
 import { signOut } from "@/store/actions/users";
 import { Button } from "../ui/button";
-function AuthenticatedMenu({ users }: { users: UserState }) {
+ export function AuthenticatedMenu({ users }: { users: UserState }) {
   const dispatch = useDispatch<AppDispatch>();
   let navigate = useNavigate();
   const signUserOut: VoidFunction = () => {
@@ -38,19 +38,11 @@ function AuthenticatedMenu({ users }: { users: UserState }) {
             <Link to="/Dashboard/overview">Dashboard</Link>
             </Button>
           </NavigationMenuItem>
-
           <NavigationMenuItem>
-            <Button onClick={() => signUserOut()}>Logout</Button>
-          </NavigationMenuItem>
-
-          <NavigationMenuItem>
-            <NavigationMenuContent>
-              <NavigationMenuLink>Link2</NavigationMenuLink>
-            </NavigationMenuContent>
           </NavigationMenuItem>
           {users.auth && (
             <NavigationMenuItem>
-              <HeaderDropDown />
+              <HeaderDropDown signUserOut={signUserOut} />
             </NavigationMenuItem>
           )}
           <NavigationMenuItem>

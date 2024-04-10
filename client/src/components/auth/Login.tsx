@@ -52,7 +52,7 @@ function Login({ onIsRegisterChange }: LoginProps) {
   const onSubmit: SubmitHandler<RequiredFormFields> = async (values: RequiredFormFields) => {
     try {
 
-      dispatch(signInUser(values));
+      dispatch(signInUser(values) as any);
       toast({
         title: "Success",
         description: "Login successful",

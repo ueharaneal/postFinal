@@ -1,7 +1,9 @@
 
 import { twMerge } from "tailwind-merge";
 import { TracingBeam } from "@/components/ui/tracing-beam";
- 
+import inputCode from '@/assets/inputcode.jpeg'
+import scan from "@/assets/scan.jpeg"
+import evenMorePerformance from "@/assets/evenmoreperformace.jpeg"
 export default function About() {
   return (
     <TracingBeam className="px-6 mt-28">
@@ -55,8 +57,7 @@ const dummyContent = [
       </>
     ),
     badge: "step 1",
-    image:
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=3540&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: scan,
   },
   {
     title: "Input the recieved codes",
@@ -74,7 +75,7 @@ const dummyContent = [
     ),
     badge: "Step 2",
     image:
-      "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&q=80&w=3540&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+     inputCode,
   },
   {
     title: "Busk!",
@@ -85,6 +86,6 @@ const dummyContent = [
     ),
     badge: "Step 3",
     image:
-      "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&q=80&w=3506&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      evenMorePerformance,
   },
 ];
